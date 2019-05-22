@@ -80,8 +80,6 @@ public class AccountBalanceTest {
         Transaction credit = new Transaction("132", TODAY, 10);
         expectedPassbook.add(credit);
         ankita.credit(10, TODAY);
-        assertEquals(expectedPassbook.get(0).amount, ankita.getPassbook().get(0).amount,1);
-        assertEquals(expectedPassbook.get(0).transactionDate, ankita.getPassbook().get(0).transactionDate);
-        assertEquals(expectedPassbook.get(0).number, ankita.getPassbook().get(0).number);
+        assertEquals(expectedPassbook, ankita.getPassbook());
     }
 }

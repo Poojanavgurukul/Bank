@@ -1,6 +1,7 @@
 package bank;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Transaction {
     public String number;
@@ -11,5 +12,20 @@ public class Transaction {
         this.number = number;
         this.transactionDate = transactionDate;
         this.amount = amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return Double.compare(that.amount, amount) == 0 &&
+                Objects.equals(number, that.number) &&
+                Objects.equals(transactionDate, that.transactionDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, transactionDate, amount);
     }
 }
