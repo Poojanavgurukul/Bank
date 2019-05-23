@@ -3,7 +3,6 @@ package bank;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -112,5 +111,21 @@ public class AccountBalanceTest {
         expectedPassbook.add(debit);
         expectedPassbook.add(credit);
         assertEquals(expectedPassbook, komal.getPassbook());
+    }
+
+    @Test
+    public void shouldGiveCorrectNumberOfAccounts(){
+        Account pooja = new Account("pooja","138",0,TODAY);
+        Account prachi = new Account("prachi","139",0,TODAY);
+        int expected=2;
+        assertEquals(expected,Account.getNumberOfAccount());
+    }
+
+    @Test
+    public void shouldGiveCorrectNumberOfAccounts1(){
+        Account pooja = new Account("pooja","138",0,TODAY);
+        Account prachi = new Account("prachi","139",0,TODAY);
+        int expected=2;
+        assertEquals(expected,Account.getNumberOfAccount());
     }
 }

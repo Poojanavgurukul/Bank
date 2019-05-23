@@ -11,13 +11,14 @@ public class Account {
     private Date openingDate;
     public final int RATE_OF_INTEREST_PER_ANNUM = 10;
     private final List<Transaction> passbook = new ArrayList<>();
-
+    private static int count=0;
 
     public Account(String holderName, String number, double balance, Date openingDate) {
         this.holderName = holderName;
         this.number = number;
         this.balance = balance;
         this.openingDate = openingDate;
+        this.count++;
     }
 
     @Override
@@ -51,6 +52,10 @@ public class Account {
 
     public List<Transaction> getPassbook() {
         return passbook;
+    }
+
+    public static int getNumberOfAccount() {
+        return count;
     }
 }
 
