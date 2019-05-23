@@ -112,20 +112,4 @@ public class AccountBalanceTest {
         expectedPassbook.add(credit);
         assertEquals(expectedPassbook, komal.getPassbook());
     }
-
-    @Test
-    public void shouldGiveCorrectNumberOfAccounts(){
-        Account pooja = new Account("pooja","138",0,TODAY);
-        Account prachi = new Account("prachi","139",0,TODAY);
-        int expected=2;
-        assertEquals(expected,Account.getNumberOfAccount());
-    }
-
-    @Test
-    public void shouldGiveCorrectNumberOfAccounts1(){
-        Account pooja = new Account("pooja","138",0,TODAY);
-        Account prachi = new Account("prachi","139",0,TODAY);
-        int expected=2;
-        assertEquals(expected,Account.getNumberOfAccount());
-    }
 }
