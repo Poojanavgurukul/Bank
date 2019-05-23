@@ -103,14 +103,16 @@ public class AccountBalanceTest {
 
     @Test
     public void multipleTranscationShouldBeDone() {
-        Account komal = new Account("komal", "135", 0.0, TODAY);
+        Account komal = new Account("komal", "135", 1000.0, TODAY);
+        komal.debit(50, TODAY);
+        komal.credit(100, TODAY);
+
         List<Transaction> expectedPassbook = new ArrayList<>();
         Transaction credit = new Transaction("135", TODAY, 100);
-        expectedPassbook.add(credit);
-        komal.credit(100, TODAY);
         Transaction debit = new Transaction("135", TODAY, 50);
         expectedPassbook.add(debit);
-        komal.debit(50, TODAY);
+        expectedPassbook.add(credit);
+
         assertEquals(expectedPassbook, komal.getPassbook());
     }
 }
