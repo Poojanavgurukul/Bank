@@ -23,9 +23,4 @@ public class Transaction {
                 Objects.equals(number, that.number) &&
                 Objects.equals(transactionDate, that.transactionDate);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(number, transactionDate, amount);
-    }
 }

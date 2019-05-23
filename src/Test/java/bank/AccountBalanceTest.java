@@ -82,4 +82,35 @@ public class AccountBalanceTest {
         ankita.credit(10, TODAY);
         assertEquals(expectedPassbook, ankita.getPassbook());
     }
+
+    @Test
+    public void debitShouldShowInTransaction() {
+        Account divya = new Account("divya", "133", 100.0, TODAY);
+        List<Transaction> expectedPassbook = new ArrayList<>();
+        Transaction debit = new Transaction("133", TODAY, 10);
+        expectedPassbook.add(debit);
+        divya.debit(10, TODAY);
+        assertEquals(expectedPassbook, divya.getPassbook());
+    }
+
+    @Test
+    public void debitShouldNotBeDoneIfBalanceIsInsufficient() {
+        Account naresh = new Account("naresh", "134", 0.0, TODAY);
+        List<Transaction> expectedEmptyPassbook = new ArrayList<>();
+        naresh.debit(100, TODAY);
+        assertEquals(expectedEmptyPassbook, naresh.getPassbook());
+    }
+
+    @Test
+    public void multipleTranscationShouldBeDone() {
+        Account komal = new Account("komal", "135", 0.0, TODAY);
+        List<Transaction> expectedPassbook = new ArrayList<>();
+        Transaction credit = new Transaction("135", TODAY, 100);
+        expectedPassbook.add(credit);
+        komal.credit(100, TODAY);
+        Transaction debit = new Transaction("135", TODAY, 50);
+        expectedPassbook.add(debit);
+        komal.debit(50, TODAY);
+        assertEquals(expectedPassbook, komal.getPassbook());
+    }
 }
