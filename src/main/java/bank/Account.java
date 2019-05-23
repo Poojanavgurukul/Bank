@@ -32,7 +32,7 @@ public class Account {
     }
 
     public void debit(double amount, Date date) {
-        Transaction debit = new Transaction(number, date, amount);
+        Transaction debit = new Transaction(number, date, -amount);
         if (amount < balance) {
             passbook.add(debit);
             this.balance -= amount;

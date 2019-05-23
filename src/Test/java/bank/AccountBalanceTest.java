@@ -87,7 +87,7 @@ public class AccountBalanceTest {
     public void debitShouldShowInTransaction() {
         Account divya = new Account("divya", "133", 100.0, TODAY);
         List<Transaction> expectedPassbook = new ArrayList<>();
-        Transaction debit = new Transaction("133", TODAY, 10);
+        Transaction debit = new Transaction("133", TODAY, -10);
         expectedPassbook.add(debit);
         divya.debit(10, TODAY);
         assertEquals(expectedPassbook, divya.getPassbook());
@@ -106,13 +106,11 @@ public class AccountBalanceTest {
         Account komal = new Account("komal", "135", 1000.0, TODAY);
         komal.debit(50, TODAY);
         komal.credit(100, TODAY);
-
         List<Transaction> expectedPassbook = new ArrayList<>();
         Transaction credit = new Transaction("135", TODAY, 100);
-        Transaction debit = new Transaction("135", TODAY, 50);
+        Transaction debit = new Transaction("135", TODAY, -50);
         expectedPassbook.add(debit);
         expectedPassbook.add(credit);
-
         assertEquals(expectedPassbook, komal.getPassbook());
     }
 }
