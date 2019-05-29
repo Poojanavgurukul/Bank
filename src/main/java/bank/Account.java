@@ -9,7 +9,7 @@ public class Account {
     String holderName;
     String number;
     private double balance;
-    private LocalDate openingDate=LocalDate.now();
+    private LocalDate openingDate = LocalDate.now();
     public final int RATE_OF_INTEREST_PER_ANNUM = 10;
     private final List<Transaction> passbook = new ArrayList<>();
 
@@ -32,12 +32,13 @@ public class Account {
         return this;
     }
 
-    public void debit(double amount, Date date) {
+    public Account debit(double amount, Date date) {
         Transaction debit = new Transaction(number, date, -amount);
         if (amount < balance) {
             passbook.add(debit);
             this.balance -= amount;
         }
+        return this;
     }
 
     public double getBalance() {

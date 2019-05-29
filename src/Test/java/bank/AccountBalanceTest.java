@@ -124,4 +124,10 @@ public class AccountBalanceTest {
         komal.credit(50,TODAY).credit(50,TODAY);
         assertEquals(1100,komal.getBalance(),1);
     }
+    @Test
+    public void shouldBeAbleToDoMultipleDebitCredit(){
+        Account komal = new Account("komal", "138", 1000.0);
+        komal.credit(50,TODAY).credit(50,TODAY).debit(100,TODAY).debit(100,TODAY);
+        assertEquals(900,komal.getBalance(),1);
+    }
 }
