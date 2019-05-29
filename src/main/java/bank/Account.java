@@ -1,5 +1,6 @@
 package bank;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,16 +9,15 @@ public class Account {
     String holderName;
     String number;
     private double balance;
-    private Date openingDate;
+    private LocalDate openingDate=LocalDate.now();
     public final int RATE_OF_INTEREST_PER_ANNUM = 10;
     private final List<Transaction> passbook = new ArrayList<>();
 
 
-    public Account(String holderName, String number, double balance, Date openingDate) {
+    public Account(String holderName, String number, double balance) {
         this.holderName = holderName;
         this.number = number;
         this.balance = balance;
-        this.openingDate = openingDate;
     }
 
     @Override
@@ -25,10 +25,11 @@ public class Account {
         return holderName + ":" + number + ":" + balance;
     }
 
-    public void credit(double amount, Date date) {
+    public Account credit(double amount, Date date) {
         Transaction credit = new Transaction(number, date, amount);
         passbook.add(credit);
         this.balance += amount;
+        return this;
     }
 
     public void debit(double amount, Date date) {
